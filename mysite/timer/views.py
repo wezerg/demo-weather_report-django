@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from datetime import datetime
 import pytz
+from django.http import JsonResponse
 
 
 def get_date(tz):
@@ -46,3 +47,7 @@ def index(request):
                                  ]
     }
     return render(request, 'timer/index.html', context)
+
+def test1(request):
+    print(request)
+    return JsonResponse({"message":"Hello World"})

@@ -4,7 +4,7 @@
 {% if tabDates %}
     {% for date in tabDates %}
     <div class="blocDate">
-        <p>Localisation : {{ date.localisation }}</p>
+        <p id="localisation">Localisation : {{ date.localisation }}</p>
         <p>Date : {{ date.date }}</p>
         <p>Heure : {{ date.heure }}</p>
     </div>
@@ -13,6 +13,18 @@
     <p>No Timer are available.</p>
 {% endif %}
 <script>
+    fetch("test1", {
+            method: "GET",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                "X-Frame-Options": "sameorigin",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+    }).then(function(response) {
+        console.log(response)
+        document.getElementById('localisation').innerHTML = response
+    })
     /*
     console.log("{{tabDates}}");
     let tabDate = "{{tabDates}}".split("&#x27;");
