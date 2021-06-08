@@ -17,12 +17,12 @@ def index(request):
     timeZ_At = pytz.timezone('Europe/Athens')
 
     context = {
-        'latest_question_list': [
-                                    {"question_text":get_date(timeZ_Kl)},
-                                    {"question_text":get_date(timeZ_Ny)},
-                                    {"question_text":get_date(timeZ_Ma)},
-                                    {"question_text":get_date(timeZ_Ce)},
-                                    {"question_text":get_date(timeZ_At)},
+        'tabDates': [
+                                    {"date":get_date(timeZ_Kl)},
+                                    {"date":get_date(timeZ_Ny)},
+                                    {"date":get_date(timeZ_Ma)},
+                                    {"date":get_date(timeZ_Ce)},
+                                    {"date":get_date(timeZ_At)},
                                  ]
     }
     return render(request, 'timer/index.html', context)
