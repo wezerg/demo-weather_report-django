@@ -5,8 +5,12 @@ import pytz
 
 def get_date(tz):
     x = datetime.now(tz)
-    return x.strftime('%Y-%m-%d %H:%M:%S %Z %z')
+    return x.strftime('%Y-%m-%d')
 
+
+def get_time(tz):
+    x = datetime.now(tz)
+    return x.strftime('%H:%M:%S')
 
 def index(request):
 
@@ -18,11 +22,27 @@ def index(request):
 
     context = {
         'tabDates': [
-                                    {"date":get_date(timeZ_Kl)},
-                                    {"date":get_date(timeZ_Ny)},
-                                    {"date":get_date(timeZ_Ma)},
-                                    {"date":get_date(timeZ_Ce)},
-                                    {"date":get_date(timeZ_At)},
+                                    {
+                                        "localisation": "Asia/Kolkata",
+                                        "date":get_date(timeZ_Kl),
+                                        "heure":get_time(timeZ_Kl),
+                                    },{
+                                        "localisation": "America/New_York",
+                                        "date":get_date(timeZ_Ny),
+                                        "heure":get_time(timeZ_Ny)
+                                    },{
+                                        "localisation": "Africa/Maseru",
+                                        "date":get_date(timeZ_Ma),
+                                        "heure":get_time(timeZ_Ma),
+                                    },{
+                                        "localisation": "US/Central",
+                                        "date":get_date(timeZ_Ce),
+                                        "heure":get_time(timeZ_Ce),
+                                    },{
+                                        "localisation": "Europe/Athens",
+                                        "date":get_date(timeZ_At),
+                                        "heure":get_time(timeZ_At)
+                                    }
                                  ]
     }
     return render(request, 'timer/index.html', context)

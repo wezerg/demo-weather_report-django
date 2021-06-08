@@ -4,9 +4,9 @@
 {% if tabDates %}
     {% for date in tabDates %}
     <div class="blocDate">
-        <p>Localisation : {{ date.date }}</p>
+        <p>Localisation : {{ date.localisation }}</p>
         <p>Date : {{ date.date }}</p>
-        <p>Heure : {{ date.date }}</p>
+        <p>Heure : {{ date.heure }}</p>
     </div>
     {% endfor %}
 {% else %}
