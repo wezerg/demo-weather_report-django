@@ -12,8 +12,8 @@ h3{
 .rowInfo:hover{
     transition: all ease-in-out 0.3s;
     transform: scale(1.01);
-    border: 1px solid #41a3ff;
-    color: #41a3ff;
+    border: 1px solid #47ff41;
+    color: #47ff41;
 }
 .blocImage{
     display: flex;
@@ -33,8 +33,11 @@ h3{
     width: 4em;
 }
 .imgNight{
-    filter: brightness(1) invert(0.6) sepia(0.6) hue-rotate(151deg) saturate(350%);
+    filter: brightness(1) invert(0.6) sepia(0.6) hue-rotate(211deg) saturate(350%);
 }
 .imgDay{
     filter: brightness(1) invert(0.6) sepia(0.6) hue-rotate(350deg) saturate(350%);
+}
+.imgMorning{
+    filter: brightness(1) invert(0.6) sepia(0.6) hue-rotate(40deg) saturate(350%);
 }
