@@ -3,73 +3,57 @@ from datetime import datetime
 import pytz
 from django.http import JsonResponse
 
-timeZ_Kl = pytz.timezone('Asia/Kolkata')
-timeZ_Ny = pytz.timezone('America/New_York')
-timeZ_Ma = pytz.timezone('Africa/Maseru')
-timeZ_Ce = pytz.timezone('US/Central')
-timeZ_At = pytz.timezone('Europe/Athens')
+class GetTime:
+    def __init__(self):
+        pass
 
-def get_date(tz):
-    x = datetime.now(tz)
-    return x.strftime('%Y-%m-%d')
+    def get_date(self, country):
+        x = datetime.now(country)
+        return x.strftime('%Y-%m-%d')
 
-
-def get_time(tz):
-    x = datetime.now(tz)
-    return x.strftime('%H:%M:%S')
-
+    def get_time(self, country):
+        x = datetime.now(country)
+        return x.strftime('%H:%M:%S')
+    
+    def get_all(self):
+        time_kl = pytz.timezone('Asia/Kolkata')
+        time_ny = pytz.timezone('America/New_York')
+        time_ma = pytz.timezone('Africa/Maseru')
+        time_ce = pytz.timezone('US/Central')
+        time_at = pytz.timezone('Europe/Athens')
+        tab = [
+            {
+                "localisation": "Asia/Kolkata",
+                "date": self.get_date(time_kl),
+                "heure": self.get_time(time_kl),
+            }, {
+                "localisation": "America/New_York",
+                "date": self.get_date(time_ny),
+                "heure": self.get_time(time_ny)
+            }, {
+                "localisation": "Africa/Maseru",
+                "date": self.get_date(time_ma),
+                "heure": self.get_time(time_ma),
+            }, {
+                "localisation": "US/Central",
+                "date": self.get_date(time_ce),
+                "heure": self.get_time(time_ce),
+            }, {
+                "localisation": "Europe/Athens",
+                "date": self.get_date(time_at),
+                "heure": self.get_time(time_at)
+            }
+        ]
+        return tab
 
 def index(request):
+    gt = GetTime()
     context = {
-        'tabDates': [
-                        {
-                            "localisation": "Asia/Kolkata",
-                            "date":get_date(timeZ_Kl),
-                            "heure":get_time(timeZ_Kl),
-                        },{
-                            "localisation": "America/New_York",
-                            "date":get_date(timeZ_Ny),
-                            "heure":get_time(timeZ_Ny)
-                        },{
-                            "localisation": "Africa/Maseru",
-                            "date":get_date(timeZ_Ma),
-                            "heure":get_time(timeZ_Ma),
-                        },{
-                            "localisation": "US/Central",
-                            "date":get_date(timeZ_Ce),
-                            "heure":get_time(timeZ_Ce),
-                        },{
-                            "localisation": "Europe/Athens",
-                            "date":get_date(timeZ_At),
-                            "heure":get_time(timeZ_At)
-                        }
-                     ]
+        'tabDates': gt.get_all()
     }
     return render(request, 'timer/index.html', context)
 
 def test1(request):
-    print(request)
-    tab_dates = [
-        {
-            "localisation": "Asia/Kolkata",
-            "date": get_date(timeZ_Kl),
-            "heure": get_time(timeZ_Kl),
-        }, {
-            "localisation": "America/New_York",
-            "date": get_date(timeZ_Ny),
-            "heure": get_time(timeZ_Ny)
-        }, {
-            "localisation": "Africa/Maseru",
-            "date": get_date(timeZ_Ma),
-            "heure": get_time(timeZ_Ma),
-        }, {
-            "localisation": "US/Central",
-            "date": get_date(timeZ_Ce),
-            "heure": get_time(timeZ_Ce),
-        }, {
-            "localisation": "Europe/Athens",
-            "date": get_date(timeZ_At),
-            "heure": get_time(timeZ_At)
-        }
-    ]
+    gt = GetTime()
+    tab_dates = gt.get_all()
     return JsonResponse({"message": tab_dates })
