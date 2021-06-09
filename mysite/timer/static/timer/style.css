@@ -3,9 +3,38 @@ h3{
     font-weight: 700;
     text-align: center;
 }
-.blocDate{
+.rowInfo{
+    transition: all ease-in-out 0.3s;
     border: 1px solid #272727;
     border-radius: 1.5em;
-    margin-bottom: 1em;
     padding: 0.5em 1em;
+}
+.rowInfo:hover{
+    transition: all ease-in-out 0.3s;
+    transform: scale(1.01);
+    border: 1px solid #41a3ff;
+    color: #41a3ff;
+}
+.blocImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    font-size: 1.6em;
+    font-weight: 800;
+    text-decoration: underline;
+}
+.info{
+    font-size: 1.3em;
+    font-weight: 700;
+}
+.imgInfo{
+    width: 4em;
+}
+.imgNight{
+    filter: brightness(1) invert(0.6) sepia(0.6) hue-rotate(151deg) saturate(350%);
+}
+.imgDay{
+    filter: brightness(1) invert(0.6) sepia(0.6) hue-rotate(350deg) saturate(350%);
 }

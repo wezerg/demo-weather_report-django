@@ -53,7 +53,7 @@ def index(request):
     }
     return render(request, 'timer/index.html', context)
 
-def test1(request):
+def refreshTime(request):
     gt = GetTime()
     tab_dates = gt.get_all()
     return JsonResponse({"message": tab_dates })
