@@ -1,11 +1,10 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'timer/style.css' %}">
 <h3>Timer Page</h3>
-<span id="test"></span>
 {% if tabDates %}
     {% for date in tabDates %}
-    <div class="blocDate">
-        <p id="localisation">Localisation : {{ date.localisation }}</p>
+    <div id="{{date.localisation}}" class="blocDate">
+        <p>Localisation : {{ date.localisation }}</p>
         <p>Date : {{ date.date }}</p>
         <p>Heure : {{ date.heure }}</p>
     </div>
@@ -13,21 +12,5 @@
 {% else %}
     <p>No Timer are available.</p>
 {% endif %}
-<script>
-    fetch("test1", {
-            method: "GET",
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                "X-Frame-Options": "sameorigin",
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-    }).then(function(response) {
-        console.log(response)
-        document.getElementById('localisation').innerHTML = response
-        return response.json()
-    }).then(function(response){
-        console.log(response);
-        document.getElementById('test').innerHTML = response.message
-    })
-</script>
+{% load static %}
+<script src="{% static 'timer/javascript.js' %}"></script>
