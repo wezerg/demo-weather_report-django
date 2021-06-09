@@ -9,7 +9,7 @@ class GetTime:
 
     def get_date(self, country):
         x = datetime.now(country)
-        return x.strftime('%Y-%m-%d')
+        return x.strftime('%d/%m/%Y')
 
     def get_time(self, country):
         x = datetime.now(country)
