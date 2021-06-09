@@ -1,6 +1,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'timer/style.css' %}">
 <h3>Timer Page</h3>
+<span id="test"></span>
 {% if tabDates %}
     {% for date in tabDates %}
     <div class="blocDate">
@@ -24,23 +25,9 @@
     }).then(function(response) {
         console.log(response)
         document.getElementById('localisation').innerHTML = response
+        return response.json()
+    }).then(function(response){
+        console.log(response);
+        document.getElementById('test').innerHTML = response.message
     })
-    /*
-    console.log("{{tabDates}}");
-    let tabDate = "{{tabDates}}".split("&#x27;");
-    let tempString = "";
-    tabDate = tabDate.forEach((val, index) => {
-        tempString += val;
-    })
-    tempString = tempString.substring(1, tempString.length - 1)
-    tempString.replace(' ', '');
-    tempString = tempString.split(', ')
-    console.log(tempString)
-    tabDate = [];
-    for (const date of tempString) {
-        console.log(date);
-        tabDate.push(JSON.stringify(date));
-    }
-    console.log(tabDate)
-    */
 </script>
