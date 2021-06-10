@@ -12,8 +12,8 @@ h3{
 .rowInfo:hover{
     transition: all ease-in-out 0.3s;
     transform: scale(1.01);
-    border: 1px solid #47ff41;
-    color: #47ff41;
+    border: 1px solid #6b6b6b;
+    color: #6b6b6b;
 }
 .blocImage{
     display: flex;
